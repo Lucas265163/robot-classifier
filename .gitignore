@@ -1,0 +1,12 @@
+data/
+output/
+*.log
+__pycache__/
+*.cache
+*.pkl
+*.zst
+.env
+.venv/
+venv/
+env/
+.env.*
