@@ -7,6 +7,7 @@ import logging
 import os
 from concurrent.futures import ThreadPoolExecutor
 from typing import List, Dict, Union
+from dotenv import load_dotenv
 
 # Setup professional logging
 logging.basicConfig(
@@ -170,10 +171,11 @@ class RedditDataPipeline:
 
 if __name__ == "__main__":
     # --- CONFIGURATION ---
-    # You must fill these in from https://www.reddit.com/prefs/apps
-    CLIENT_ID = "YOUR_CLIENT_ID"
-    CLIENT_SECRET = "YOUR_CLIENT_SECRET"
-    USER_AGENT = "python:bot_detector:v1.0 (by /u/Lucas265163)"
+    load_dotenv()
+
+    CLIENT_ID = os.getenv("REDDIT_CLIENT_ID")
+    CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET")
+    USER_AGENT = os.getenv("REDDIT_USER_AGENT")
 
     pipeline = RedditDataPipeline(CLIENT_ID, CLIENT_SECRET, USER_AGENT)
 
